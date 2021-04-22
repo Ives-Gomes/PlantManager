@@ -36,10 +36,6 @@
         ]
       }
     ],
-    "no-use-before-define": "off",
-    "@typescript-eslint/no-use-before-define": [
-      "error"
-    ],
     "react/react-in-jsx-scope": "off",
     "import/extensions": [
       "error",
@@ -49,7 +45,15 @@
         "tsx": "never"
       }
     ],
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "no-use-before-define": [
+      "error",
+      {
+        "variables": false
+      }
+    ],
+    "camelcase": "off",
+    "@typescript-eslint/camelcase": "off"
   },
   "settings": {
     "import/resolver": {
