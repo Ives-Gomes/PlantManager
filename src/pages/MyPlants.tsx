@@ -57,7 +57,6 @@ export default function MyPlants(): ReactElement {
           keyExtractor={item => String(item.id)}
           renderItem={({ item }) => <PlantCardSecondary data={item} />}
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ flex: 1 }}
         />
       </View>
     </View>
