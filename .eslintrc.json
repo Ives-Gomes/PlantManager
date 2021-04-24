@@ -53,6 +53,7 @@
         "functions": false
       }
     ],
+    "import/no-duplicates": "off",
     "camelcase": "off",
     "@typescript-eslint/camelcase": "off"
   },
