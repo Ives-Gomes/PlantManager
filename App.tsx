@@ -1,17 +1,42 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import AppLoading from 'expo-app-loading';
+import * as Notifications from 'expo-notifications';
 
 import {
   useFonts,
   Jost_400Regular,
   Jost_600SemiBold,
 } from '@expo-google-fonts/jost';
+
 import Routes from './src/routes';
+import { PlantProps } from './src/libs/storage';
 
 export default function App(): ReactElement {
   const [fontsLoaded] = useFonts({
     Jost_400Regular,
     Jost_600SemiBold,
+  });
+
+  useEffect(() => {
+    // Get data in notification, after delete notification:
+    const subscription = Notifications.addNotificationReceivedListener(
+      async notification => {
+        const data = notification.request.content.data.plant as PlantProps;
+        console.log(data);
+      }
+    );
+    return () => subscription.remove();
+
+    // Remove all notifications:
+    /* async function notifications() {
+      const data = await Notifications.getAllScheduledNotificationsAsync();
+
+      await Notifications.cancelAllScheduledNotificationsAsync();
+
+      console.log(data);
+    }
+
+    notifications(); */
   });
 
   if (!fontsLoaded) {
